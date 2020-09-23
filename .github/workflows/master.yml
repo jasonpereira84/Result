@@ -23,4 +23,4 @@ jobs:
       run: dotnet build --configuration Release --no-restore --verbosity Normal
       
     - name: Publish Package
-      run: dotnet nuget push src/bin/Release/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push src/bin/Release/*.nupkg -k ${{secrets.NUGET_APIKEY}} -s https://api.nuget.org/v3/index.json
