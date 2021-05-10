@@ -7,16 +7,14 @@ namespace JasonPereira84.Result
 {
     namespace Extensions
     {
-        using Internal;
-
         public static partial class Result
         {
             public static TResultOut Map<TError, TResult, TErrorOut, TResultOut>(this TResult result,
                 Func<TError, TResultOut> onSuccess, Func<TError, TResultOut> onFailure, Func<TError, TResultOut> onUnknown)
                 where TResult : IResult<TError>
                 where TResultOut : IResult<TErrorOut>
-                => (Helpers.IsUnknown(result) ? onUnknown
-                        : Helpers.IsFailure(result) ? onFailure
+                => (_internalHelpers.IsUnknown(result) ? onUnknown
+                        : _internalHelpers.IsFailure(result) ? onFailure
                             : onSuccess).Invoke(result.Error);
             public static TResultOut Map<TError, TResult, TErrorOut, TResultOut>(this TResult result,
                 Func<TError, TResultOut> onSuccess, Func<TError, TResultOut> onNotSuccess)
