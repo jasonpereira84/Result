@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 namespace JasonPereira84.Result
 {
-    using Internal;
-
     public partial struct Result
     {
         public String ToString(String format)
@@ -16,9 +14,9 @@ namespace JasonPereira84.Result
 
         public override String ToString()
             => ToString(
-                Helpers.GetFormat("{{0}}",
-                    Helpers.GetFormatForSet(nameof(Overall)),
-                    Helpers.GetFormatForPair(nameof(Error))));
+                _internalHelpers.GetFormat("{{0}}",
+                    _internalHelpers.GetFormatForSet(nameof(Overall)),
+                    _internalHelpers.GetFormatForPair(nameof(Error))));
     }
 
     public partial struct Result<TValue>
@@ -32,10 +30,10 @@ namespace JasonPereira84.Result
 
         public override String ToString()
             => ToString(
-                Helpers.GetFormat("{{0}}",
-                    Helpers.GetFormatForSet(nameof(Overall)),
-                    Helpers.GetFormatForPair(nameof(Error)),
-                    Helpers.GetFormatForPair(nameof(Value))));
+                _internalHelpers.GetFormat("{{0}}",
+                    _internalHelpers.GetFormatForSet(nameof(Overall)),
+                    _internalHelpers.GetFormatForPair(nameof(Error)),
+                    _internalHelpers.GetFormatForPair(nameof(Value))));
     }
 
     public partial struct Result<TError, TValue>
@@ -48,9 +46,9 @@ namespace JasonPereira84.Result
 
         public override String ToString()
             => ToString(
-                Helpers.GetFormat("{{0}}",
-                    Helpers.GetFormatForSet(nameof(Overall)),
-                    Helpers.GetFormatForPair(nameof(Error)),
-                    Helpers.GetFormatForPair(nameof(Value))));
+                _internalHelpers.GetFormat("{{0}}",
+                    _internalHelpers.GetFormatForSet(nameof(Overall)),
+                    _internalHelpers.GetFormatForPair(nameof(Error)),
+                    _internalHelpers.GetFormatForPair(nameof(Value))));
     }
 }
