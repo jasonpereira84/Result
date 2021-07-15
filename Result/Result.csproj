@@ -20,8 +20,11 @@
 		<Title>JasonPereira84's Result library</Title>
 		<PackageDescription>Interfaces definitions for IResult, IResult&lt;TError&gt; &amp; IResult&lt;TError, TValue&gt;. Struct definitions for Result, Result&lt;TValue&gt;, Result&lt;TError, TValue&gt;. Helper methods etc. as Extensions</PackageDescription>
 		<PackageTags>C#, Library, Utils, Result</PackageTags>
+    <RepositoryUrl>https://github.com/jasonpereira84/Result</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<Authors>jasonpereira84@gmail.com</Authors>
-		<Version>2.0.0</Version>
+		<Version>2.0.1</Version>
 
 	</PropertyGroup>
 
@@ -34,5 +37,12 @@
     <DefineConstants />
     <Optimize>true</Optimize>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

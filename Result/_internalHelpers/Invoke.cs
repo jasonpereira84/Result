@@ -18,7 +18,7 @@ namespace JasonPereira84.Result
 
                 return stringifier.Invoke(t);
             }
-            catch (Exception x)
+            catch (Exception)
             {
                 return _def();
             }
