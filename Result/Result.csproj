@@ -1,32 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
+  <PropertyGroup>
 
-    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
-		<Configuration>'$(Configuration)'</Configuration>
-		<FileVersion>1.0.0.0</FileVersion>
-		<OutputType>Library</OutputType>
-		
-		<ProjectGuid>{72657375-6C74-0000-0000-000000737263}</ProjectGuid>
-		<RootNamespace>JasonPereira84.Result</RootNamespace>
-		<AssemblyName>JasonPereira84.Result</AssemblyName>
-		<AssemblyTitle>JasonPereira84's Result library</AssemblyTitle>
-		<Description>Interfaces definitions for IResult, IResult&lt;TError&gt; &amp; IResult&lt;TError, TValue&gt;. Struct definitions for Result, Result&lt;TValue&gt;, Result&lt;TError, TValue&gt;. Helper methods etc. as Extensions</Description>
-		<DocumentationFile></DocumentationFile>
+    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <Configuration>'$(Configuration)'</Configuration>
+    <FileVersion>1.0.0.0</FileVersion>
+    <OutputType>Library</OutputType>
+    
+    <ProjectGuid>{72657375-6C74-0000-0000-000000737263}</ProjectGuid>
+    <RootNamespace>JasonPereira84.Result</RootNamespace>
+    <AssemblyName>JasonPereira84.Result</AssemblyName>
+    <AssemblyTitle>JasonPereira84's Result library</AssemblyTitle>
+    <Description>Interfaces definitions for IResult, IResult&lt;TError&gt; &amp; IResult&lt;TError, TValue&gt;. Struct definitions for Result, Result&lt;TValue&gt;, Result&lt;TError, TValue&gt;. Helper methods etc. as Extensions</Description>
+    <DocumentationFile></DocumentationFile>
 
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<IncludeSymbols>true</IncludeSymbols>
-		<PackageId>JasonPereira84.Result</PackageId>
-		<Title>JasonPereira84's Result library</Title>
-		<PackageDescription>Interfaces definitions for IResult, IResult&lt;TError&gt; &amp; IResult&lt;TError, TValue&gt;. Struct definitions for Result, Result&lt;TValue&gt;, Result&lt;TError, TValue&gt;. Helper methods etc. as Extensions</PackageDescription>
-		<PackageTags>C#, Library, Utils, Result</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <PackageId>JasonPereira84.Result</PackageId>
+    <Title>JasonPereira84's Result library</Title>
+    <PackageDescription>Interfaces definitions for IResult, IResult&lt;TError&gt; &amp; IResult&lt;TError, TValue&gt;. Struct definitions for Result, Result&lt;TValue&gt;, Result&lt;TError, TValue&gt;. Helper methods etc. as Extensions</PackageDescription>
+    <PackageTags>C#, Library, Utils, Result</PackageTags>
     <RepositoryUrl>https://github.com/jasonpereira84/Result</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<Authors>jasonpereira84@gmail.com</Authors>
-		<Version>3.0.3</Version>
+    <Authors>jasonpereira84@gmail.com</Authors>
+    <Version>2.0.1</Version>
 
-	</PropertyGroup>
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -43,6 +43,12 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>$(AssemblyName).Tests</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
 
 </Project>
