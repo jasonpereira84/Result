@@ -1,4 +1,4 @@
-name: Build(Debug)
+name: Build & Publish Package
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: "Set flag from Commit"
+    - name: Get configuration
       run: |
         if [ "${{ github.ref_name }}" == "develop" ]; then
           echo "cfg=Debug" >> $GITHUB_ENV
@@ -22,7 +22,7 @@ jobs:
           echo "cfg set to Release"
         fi
     
-    - name: Setup .NET Core
+    - name: Setup framework
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
@@ -32,3 +32,16 @@ jobs:
       
     - name: Build solution
       run: dotnet build --configuration ${{ env.cfg }} --no-restore --verbosity Normal --output BuildResults --disable-parallel
+
+    - name: Run tests
+      run: dotnet test --configuration ${{ env.cfg }} --no-restore --verbosity Normal
+
+    - name: Upload artifact 
+      uses: actions/upload-artifact@v2
+      with:
+        path: BuildResults
+        if-no-files-found: error
+      
+    - name: Publish package
+      if: github.ref_name == 'master'
+      run: dotnet nuget push BuildResults/*.nupkg -k ${{secrets.NUGET_APIKEY}} -s https://api.nuget.org/v3/index.json
