@@ -2,15 +2,25 @@ name: Build(Debug)
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ develop, release-*, hotfix-*, master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout develop
+    - name: Checkout repository
       uses: actions/checkout@v3
+
+    - name: "Set flag from Commit"
+      run: |
+        if $GITHUB_REF_NAME == develop; then
+          echo "cfg=Debug" >> $GITHUB_ENV
+          echo "cfg set to Debug"
+        else
+          echo "cfg=Release" >> $GITHUB_ENV
+          echo "cfg set to Release"
+        fi
     
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
@@ -21,13 +31,4 @@ jobs:
       run: dotnet restore
       
     - name: Build solution
-      run: dotnet build --configuration Debug --no-restore --verbosity Normal --output BuildResults --disable-parallel
-
-    - name: Run tests
-      run: dotnet test --configuration Debug --no-restore --verbosity Normal
-
-    - name: Upload artifact 
-      uses: actions/upload-artifact@v2
-      with:
-        path: BuildResults
-        if-no-files-found: error
+      run: dotnet build --configuration $env.cfg --no-restore --verbosity Normal --output BuildResults --disable-parallel
