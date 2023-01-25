@@ -16,6 +16,9 @@
 
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PackageId>JasonPereira84.Result</PackageId>
     <Title>JasonPereira84's Result library</Title>
     <PackageDescription>Interfaces definitions for IResult, IResult&lt;TError&gt; &amp; IResult&lt;TError, TValue&gt;. Struct definitions for Result, Result&lt;TValue&gt;, Result&lt;TError, TValue&gt;. Helper methods etc. as Extensions</PackageDescription>
@@ -37,6 +40,14 @@
     <DefineConstants />
     <Optimize>true</Optimize>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE">
