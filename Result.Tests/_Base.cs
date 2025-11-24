@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 
+
+[assembly: Parallelize(Scope = ExecutionScope.ClassLevel)]
 namespace JasonPereira84.Result.Tests
 {
     internal class SomeClass : IEquatable<SomeClass>
