@@ -2,7 +2,7 @@
 
 namespace JasonPereira84.Result
 {
-    public partial struct Result<TError, TValue>
+    public partial class Result<TError, TValue>
     {
         public String AsString(
             String onSuccess,

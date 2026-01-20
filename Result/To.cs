@@ -1,9 +1,15 @@
-﻿using System;
-
-namespace JasonPereira84.Result
+﻿namespace JasonPereira84.Result
 {
-    public partial struct Result<TError, TValue>
+    public partial class Result<TError, TValue>
     {
+        public Result<TError, TValue> ToUnknown(TError error = default(TError), TValue value = default(TValue))
+        {
+            Overall = null;
+            Error = error;
+            Value = value;
+            return this;
+        }
+
         public Result<TError, TValue> ToFailure(TError error, TValue value = default(TValue))
         {
             Overall = false;
