@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 1. Configuration - Set your project filename here
-CSPROJ_FILE="AppSettings/AppSettings.csproj"
+CSPROJ_FILE="Result/Result.csproj"
 PROPS_FILE="Directory.Build.props"
 
 # 2. Validation
@@ -26,7 +26,6 @@ fi
 # 4. Update .csproj (Project Level)
 if [ -f "$CSPROJ_FILE" ]; then
     sed -i "s|<Version>.*</Version>|<Version>$NEW_VERSION</Version>|g" "$CSPROJ_FILE"
-    sed -i "s|<FileVersion>.*</FileVersion>|<FileVersion>$NEW_VERSION</FileVersion>|g" "$CSPROJ_FILE"
     git add "$CSPROJ_FILE"
 else
     echo "Error: $CSPROJ_FILE not found. Check the filename in the script."
