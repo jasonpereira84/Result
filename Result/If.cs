@@ -2,7 +2,7 @@
 
 namespace JasonPereira84.Result
 {
-    public partial struct Result<TError, TValue>
+    public partial class Result<TError, TValue>
     {
         public TReturn If<TReturn>(
             Func<TError, TValue, TReturn> onSuccess,

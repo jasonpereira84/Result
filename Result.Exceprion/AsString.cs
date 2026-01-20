@@ -2,7 +2,8 @@
 
 namespace JasonPereira84.Result
 {
-    public partial class Result<TError, TValue>
+    public partial class ResultException<TException, TValue> : Exception
+        where TException : Exception
     {
         public String AsString(
             String onSuccess,
