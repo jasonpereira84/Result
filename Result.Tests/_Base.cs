@@ -1,47 +1,97 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 
-
-[assembly: Parallelize(Scope = ExecutionScope.ClassLevel)]
 namespace JasonPereira84.Result.Tests
 {
-    internal class SomeClass : IEquatable<SomeClass>
+    [TestClass]
+    public partial class Test_Result
     {
-        public Int32 Value { get; set; }
-
-        public override bool Equals(object obj)
+        [TestMethod]
+#pragma warning disable IDE1006 // Naming Styles
+        public void ctor()
+#pragma warning restore IDE1006 // Naming Styles
         {
-            return Equals(obj as SomeClass);
-        }
 
-        public bool Equals(SomeClass other)
-        {
-            if (other == null)
-                return false;
-
-            return Value == other.Value;
-        }
-
-        public override int GetHashCode()
-        {
-            var hash = new HashCode();
             {
-                hash.Add(Value);
+                var result = new Result();
+
+                Assert.IsNull(result.Overall);
             }
-            return hash.ToHashCode();
-        }
 
-        public static bool operator ==(SomeClass left, SomeClass right)
-        {
-            return EqualityComparer<SomeClass>.Default.Equals(left, right);
-        }
+            {
 
-        public static bool operator !=(SomeClass left, SomeClass right)
-        {
-            return !(left == right);
+                {
+                    var result = new Result<Int32>(5);
+
+                    Assert.IsNull(result.Overall);
+                    Assert.AreEqual(
+                        expected: 5,
+                        actual: result.Value);
+                }
+
+                {
+                    var result = new Result<Int32>();
+
+                    Assert.IsNull(result.Overall);
+                    Assert.AreEqual(
+                        expected: default,
+                        actual: result.Value);
+                }
+
+            }
+
+            {
+
+                {
+                    var result = new Result<Int32, Decimal>(5, 10m);
+
+                    Assert.IsNull(result.Overall);
+                    Assert.AreEqual(
+                        expected: 5,
+                        actual: result.Value);
+                    Assert.AreEqual(
+                        expected: 10,
+                        actual: result.Error);
+                }
+
+                {
+                    var result = new Result<Int32, Decimal>(5);
+
+                    Assert.IsNull(result.Overall);
+                    Assert.AreEqual(
+                        expected: 5,
+                        actual: result.Value);
+                    Assert.AreEqual(
+                        expected: default,
+                        actual: result.Error);
+                }
+
+                {
+                    var result = new Result<Int32, Decimal>(10m);
+
+                    Assert.IsNull(result.Overall);
+                    Assert.AreEqual(
+                        expected: default,
+                        actual: result.Value);
+                    Assert.AreEqual(
+                        expected: 10m,
+                        actual: result.Error);
+                }
+
+                {
+                    var result = new Result<Int32, Decimal>();
+
+                    Assert.IsNull(result.Overall);
+                    Assert.AreEqual(
+                        expected: default,
+                        actual: result.Value);
+                    Assert.AreEqual(
+                        expected: default,
+                        actual: result.Error);
+                }
+            }
+
         }
 
     }
-
 }

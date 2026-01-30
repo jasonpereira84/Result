@@ -9,7 +9,7 @@ namespace JasonPereira84.Result.Tests
         public void Is()
         {
             {
-                var result = new Result<Object, Object>();
+                var result = new Result<Int32, Decimal>();
                 result.Overall = null;
 
                 Assert.IsFalse(result.NotIsUnknown);
@@ -18,7 +18,7 @@ namespace JasonPereira84.Result.Tests
             }
 
             {
-                var result = new Result<Object, Object>();
+                var result = new Result<Int32, Decimal>();
                 result.Overall = false;
 
                 Assert.IsTrue(result.NotIsUnknown);
@@ -27,7 +27,7 @@ namespace JasonPereira84.Result.Tests
             }
 
             {
-                var result = new Result<Object, Object>();
+                var result = new Result<Int32, Decimal>();
                 result.Overall = true;
 
                 Assert.IsTrue(result.NotIsUnknown);
