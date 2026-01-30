@@ -2,7 +2,7 @@
 
 namespace JasonPereira84.Result
 {
-    public partial class Result<TError, TValue>
+    public partial class Result
     {
         public Boolean NotIsUnknown
             => Overall.HasValue;
